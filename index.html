@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Little Trashmaid</title>
+    <link rel="shortcut icon" href="files/icon.jpg" type="image/x-icon">
+</head>
+<body>
+
+<div style="color: #fff;position:fixed;top: 10px;left: 10px;font-size:x-large;font-family: sans-serif;" onclick="nums()">The Little Trashmaid</div>
+    <div class="divs">
+      
+      
+        <div onclick="prevpic()"><</div>
+
+        <img src="files/Img(0).jpg" title="" style="max-height: 100%;max-width: 80%;">
+      
+        <div onclick="nextpic()" >></div>
+
+    </div>
+<div style="display: flex;position: fixed;bottom: 10px;width:90% ;justify-content: space-around;margin-left: 5%;margin-right: 5%;">
+  <button onclick="prevpic()" id="id_2" style="filter: invert()";>◄◄ </button>
+
+    <button id="id_1" class="grayscale" style="filter: invert();" onclick="document.querySelector('img').style.filter='grayscale()' ">Grayscale</button>
+    <button id="id_1" class="invert" style="filter: invert();" onclick="document.querySelector('img').style.filter='invert()' ">Invert</button>
+    <button class="normal" style="filter: invert();" onclick="timess()">►</button>
+    <button id="id_1" style="filter: invert();" onclick="document.querySelector('img').style.filter='none' ">Normal </button>
+    <button id="id_1" style="filter: invert();" onclick="document.querySelector('img').style.filter='contrast(150%)' ">contrast </button>
+
+    <button onclick="nextpic()" id="id_2" style="filter: invert()";>►►</button>
+</div>
+<style>
+    body{
+            background-color: black;
+        }
+        #id_2{
+            display: none;
+        }
+        #id_1{
+            display: flex;
+        }
+    .divs{
+        display: flex;
+        width: 96%;
+        height: 650px;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+        padding-top: 35px;
+    }
+     .divs div{
+    font-size:100px;
+    color: #fff;
+ }
+   @media (max-width:600px){
+ .divs div{
+    font-size:40px;
+    color: #fff;
+ }
+ .divs{
+        width: 99.6%;
+        margin: 0.2%;
+    }
+    #id_2{
+            display: flex;
+        }
+        #id_1{
+            display: none;
+        }
+   }
+    ::selection{
+        background-color: black;
+    }
+    @media (max-height:700px){
+        .divs{
+        height: 500px;
+    }
+    }
+     @media (max-height:600px){
+        .divs{
+        height: 400px;
+    }
+    }
+      @media (max-height:500px){
+        .divs{
+        height: 300px;
+    }
+    }
+</style>
+<script>
+
+let Img=document.querySelector('img')
+let imgsrc = 0 
+function nextpic(){
+    if(imgsrc == 954){
+        imgsrc = 0
+        Img.src =`files/Img(0).jpg`
+        Img.title =`files/Img(0).jpg`
+
+    }else{
+    imgsrc=imgsrc + 1
+    Img.src =`files/Img(${imgsrc}).jpg`
+    Img.title =`files/Img(${imgsrc}).jpg`
+}
+}
+
+function prevpic(){
+    if(imgsrc == 0){
+        imgsrc = 954
+        Img.src =`files/Img(954).jpg`
+        Img.title =`files/Img(954).jpg`
+    }else{
+    imgsrc=imgsrc - 1
+    Img.src =`files/Img(${imgsrc}).jpg`
+    Img.title =`files/Img(${imgsrc}).jpg`
+}
+
+}
+
+let times = 'no'
+
+function timess(){
+
+if( times == 'no'){
+     timeOut = setInterval("nextpic()",2000)
+    times = 'yes'
+document.querySelector('.normal').innerText="❚❚"
+    }else if(times == 'yes'){
+
+       clearInterval(timeOut)
+      times = 'no'   
+      document.querySelector('.normal').innerText="►"
+   
+    }
+
+}
+
+
+function nums(){
+    let num=prompt("Enter chapter no : ")
+    num1=parseInt(num)
+        Img.src =`files/Img(${num1}).jpg`
+        Img.title =`files/Img(${num1}).jpg`
+        imgsrc = num1
+}
+
+document.addEventListener('keydown', function(e){
+
+if(e.keyCode == '38'){
+    console.log('up arrow')
+
+}else if(e.keyCode == '40'){
+
+    console.log('down arrow')
+}else if(e.keyCode == '37'){
+      prevpic()
+    console.log('left arrow')
+}else if(e.keyCode == '39'){
+      nextpic()
+    console.log('right arrow')
+}else if(e.keyCode == '32'){
+    timess()
+}
+
+})
+
+
+</script>
+</body>
+</html>
