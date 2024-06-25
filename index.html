@@ -6,7 +6,7 @@
     <title>The Little Trashmaid</title>
     <link rel="shortcut icon" href="files/icon.jpg" type="image/x-icon">
 </head>
-<body>
+<body ondblclick=" chapnum()">
 
 
 <div class="hides">
@@ -119,8 +119,18 @@ display: none;
 
 let Img=document.querySelector('img')
 let imgsrc = 0 
+
+function chapnum(){
+
+    let Npro=prompt('Enter no of chapter=')
+     imgsrc = parseInt(Npro)
+     Img.src =`files/Img(${imgsrc}).jpg`
+        Img.title =`files/Img(${imgsrc}).jpg`
+
+    }
+
 function nextpic(){
-    if(imgsrc == 954){
+    if(imgsrc == 970){
         imgsrc = 0
         Img.src =`files/Img(0).jpg`
         Img.title =`files/Img(0).jpg`
@@ -134,9 +144,9 @@ function nextpic(){
 
 function prevpic(){
     if(imgsrc == 0){
-        imgsrc = 954
-        Img.src =`files/Img(954).jpg`
-        Img.title =`files/Img(954).jpg`
+        imgsrc = 970
+        Img.src =`files/Img(970).jpg`
+        Img.title =`files/Img(970).jpg`
     }else{
     imgsrc=imgsrc - 1
     Img.src =`files/Img(${imgsrc}).jpg`
